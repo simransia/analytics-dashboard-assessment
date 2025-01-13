@@ -37,3 +37,5 @@ next-env.d.ts
 # data
 /data-to-visualize
 /public/data
+!data-to-visualize/
+!data-to-visualize/Electric_Vehicle_Population_Data.csv

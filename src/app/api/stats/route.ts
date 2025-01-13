@@ -1,39 +1,42 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
-import type { Stats } from "@/types";
-
-let STATS_CACHE: Stats | null = null;
+import { processData } from "@/lib/data";
 
 export async function GET() {
   try {
-    if (!STATS_CACHE) {
-      const statsPath = path.join(
-        process.cwd(),
-        "public",
-        "data",
-        "stats.json"
-      );
+    const records = await processData();
 
-      try {
-        await fs.access(statsPath);
-      } catch {
-        throw new Error(
-          "Stats file not found. Please run 'npm run preprocess' first."
-        );
+    // Calculate stats
+    const totalVehicles = records.length;
+    const avgRange = Math.round(
+      records.reduce((sum, record) => sum + record.range, 0) / totalVehicles
+    );
+
+    const makeCount = new Map<string, number>();
+    let cleanFuelVehicles = 0;
+
+    records.forEach((record) => {
+      makeCount.set(record.make, (makeCount.get(record.make) || 0) + 1);
+      if (
+        record.cleanFuelEligibility.includes(
+          "Clean Alternative Fuel Vehicle Eligible"
+        )
+      ) {
+        cleanFuelVehicles++;
       }
+    });
 
-      const rawData = await fs.readFile(statsPath, "utf-8");
-      STATS_CACHE = JSON.parse(rawData);
-    }
+    const topMake = [...makeCount.entries()].sort((a, b) => b[1] - a[1])[0][0];
 
-    return NextResponse.json(STATS_CACHE);
+    return NextResponse.json({
+      totalVehicles,
+      avgRange,
+      topMake,
+      cleanFuelVehicles,
+    });
   } catch (error) {
-    console.error("Error fetching stats:", error);
+    console.error("Error processing stats:", error);
     return NextResponse.json(
-      {
-        error: error instanceof Error ? error.message : "Failed to fetch stats",
-      },
+      { error: "Failed to process stats" },
       { status: 500 }
     );
   }
