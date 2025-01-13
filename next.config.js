@@ -5,14 +5,7 @@ const nextConfig = {
   images: {
     domains: [],
   },
-  // Enable CSS handling
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.css$/,
-      use: ["style-loader", "css-loader", "postcss-loader"],
-    });
-    return config;
-  },
+  // Add any other configuration options here
 };
 
 module.exports = nextConfig;
