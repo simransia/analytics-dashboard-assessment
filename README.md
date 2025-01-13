@@ -1,45 +1,64 @@
-# MapUp - Analytics Dashboard Assessment
+# EV Analytics Dashboard Assessment
 
 ## Overview
 
-The objective of this assessment is to analyze the provided Electric Vehicle (EV) population data and create a frontend dashboard that visualizes key insights about the dataset. This repository contains the necessary data and instructions for you to demonstrate your analytical and dashboard creation skills. Feel free to use any tech stack you want to create the dashboard.
+This project is an analytics dashboard that visualizes Electric Vehicle (EV) population data, providing key insights and trends about EV adoption. Built with Next.js and Tailwind CSS, it offers an interactive and intuitive interface for exploring the dataset.
+
+## Features
+
+- Interactive data visualizations of EV population trends
+- Key metrics and insights about EV adoption patterns
+- Filtering and sorting capabilities
+- Responsive design for all devices
+- Real-time data exploration
+
+## Tech Stack
+
+- Next.js 14
+- Tailwind CSS
+- Chart.js for visualizations
+- TypeScript
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the dashboard.
 
 ## Dataset
 
-The Electric Vehicle Population dataset is available in the [Electric Vehicle Population Data (CSV)](./data-to-visualize/Electric_Vehicle_Population_Data.csv) within this repository, for more information about the dataset visit [kaggle dataset](https://www.kaggle.com/datasets/willianoliveiragibin/electric-vehicle-population).
+The dashboard uses the Electric Vehicle Population dataset, which includes:
 
-**Note:** We've reduced the dataset in the repository to keep the data size small in the frontend bundle.
-
-## Tasks
-
-### Dashboard Creation:
-
-- Create a frontend dashboard that presents key insights from the dataset.
-- Design the dashboard to effectively communicate important metrics and visualizations.
-- Include visual representations such as charts, graphs, or tables to showcase trends and relationships in the data.
-- Ensure the dashboard is user-friendly and intuitive for exploring the dataset.
-
-### Deployment:
-
-- Deploy your frontend dashboard to a hosting platform of your choice.
-- Make sure the dashboard is publicly accessible.
+- Vehicle makes and models
+- Electric range capabilities
+- Model years
+- Geographic distribution
+- Clean alternative fuel vehicle types
 
 ## Evaluation Criteria
 
-Your submission will be evaluated based on:
+The dashboard is designed to meet the following criteria:
 
-- **Analytical Depth:** The depth of your analysis and insights derived from the dataset.
-- **Dashboard Design:** Clarity, aesthetics, and usability of the frontend dashboard.
-- **Insightfulness:** Effectiveness in conveying key insights about electric vehicles.
+- **Analytical Depth**: Comprehensive analysis of EV adoption trends
+- **Dashboard Design**: Clear, aesthetic, and user-friendly interface
+- **Insightfulness**: Effective communication of key EV insights
 
-## Submission Guidelines
+## Project Structure
 
-- Fork this repository to your GitHub account.
-- Complete your analysis and create the frontend dashboard.
-- Deploy the dashboard to a hosting platform.
-- Update this [README.md](README.md) file with the URL to your live dashboard.
-- **Repository Access:** Keep your repository private to avoid visibility by other candidates. Add the following email addresses as collaborators to the repository, these are our internal emails and will be evaluating your assessment:
-  - vedantp@mapup.ai
-  - ajayap@mapupa.ai
-  - divyanshs@mapup.ai
-- Finally, please fill out the google form that you received via email to submit the assessment for review.
+```
+├── app/                 # Next.js app directory
+├── components/         # Reusable UI components
+├── lib/               # Utility functions
+├── public/            # Static assets
+└── data-to-visualize/ # Dataset files
+```
+
+## Deployment
+
+The dashboard is deployed and accessible at [deployment-url].
