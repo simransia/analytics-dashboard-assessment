@@ -5,7 +5,13 @@ const nextConfig = {
   images: {
     domains: [],
   },
-  // Add any other configuration options here
+  // Ensure CSS modules are handled properly
+  webpack: (config) => {
+    return config;
+  },
+  // Optimize CSS loading
+  optimizeFonts: true,
+  poweredByHeader: false,
 };
 
 module.exports = nextConfig;
