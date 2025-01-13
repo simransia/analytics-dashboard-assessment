@@ -7,7 +7,7 @@ import type { Stats } from "@/types";
 type StatCardType = {
   key: keyof Stats;
   title: string;
-  format: (value: Stats[keyof Stats]) => string;
+  format: (value: number | string) => string;
   icon: React.ElementType;
   bgColor: string;
   iconColor: string;
@@ -17,7 +17,8 @@ const statCards: StatCardType[] = [
   {
     key: "totalVehicles",
     title: "Total EVs",
-    format: (value) => value.toLocaleString(),
+    format: (value) =>
+      typeof value === "number" ? value.toLocaleString() : "0",
     icon: Car,
     bgColor: "bg-blue-50",
     iconColor: "text-blue-500",
@@ -25,7 +26,7 @@ const statCards: StatCardType[] = [
   {
     key: "avgRange",
     title: "Average Range",
-    format: (value) => `${value} miles`,
+    format: (value) => `${value || 0} miles`,
     icon: Gauge,
     bgColor: "bg-purple-50",
     iconColor: "text-purple-500",
@@ -33,7 +34,7 @@ const statCards: StatCardType[] = [
   {
     key: "topMake",
     title: "Top Manufacturer",
-    format: (value) => `${value}`,
+    format: (value) => String(value || "N/A"),
     icon: Award,
     bgColor: "bg-pink-50",
     iconColor: "text-pink-500",
@@ -41,7 +42,8 @@ const statCards: StatCardType[] = [
   {
     key: "cleanFuelVehicles",
     title: "Clean Fuel Vehicles",
-    format: (value) => value.toLocaleString(),
+    format: (value) =>
+      typeof value === "number" ? value.toLocaleString() : "0",
     icon: Zap,
     bgColor: "bg-orange-50",
     iconColor: "text-orange-500",
